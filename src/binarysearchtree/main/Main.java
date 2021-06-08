@@ -22,5 +22,9 @@ public class Main {
         integerTree.postOrder(integerTree.getRoot());
         System.out.println();
         integerTree.inOrder(integerTree.getRoot());
+        System.out.println(integerTree.search(13));
+        System.out.println(integerTree.search(69));
+        System.out.println(integerTree.search(15));
+        System.out.println(integerTree.search(67));
     }
 }

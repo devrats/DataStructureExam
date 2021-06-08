@@ -28,15 +28,15 @@ public class Tree<E extends Comparable<E>> {
         } else {
             Node temp = root;
             Node parent = null;
-            while (temp!=null){
+            while (temp != null) {
                 parent = temp;
-                if(element.compareTo((E) temp.getData())>=0){
+                if (element.compareTo((E) temp.getData()) >= 0) {
                     temp = temp.getRightChild();
-                }else{
+                } else {
                     temp = temp.getLeftChild();
                 }
             }
-            if(element.compareTo((E) parent.getData())>=0){
+            if (element.compareTo((E) parent.getData()) >= 0) {
                 parent.setRightChild(new Node(element));
             } else {
                 parent.setLeftChild(new Node(element));
@@ -44,6 +44,22 @@ public class Tree<E extends Comparable<E>> {
             isSuccess = true;
         }
         return isSuccess;
+    }
+
+    public boolean search(E element) {
+        boolean isFound = false;
+        Node temp = root;
+        while (temp != null) {
+            if (temp.getData().equals(element)) {
+                isFound = true;
+                break;
+            } else if (element.compareTo((E) temp.getData()) >= 0) {
+                temp = temp.getRightChild();
+            } else {
+                temp = temp.getLeftChild();
+            }
+        }
+        return isFound;
     }
 
     private boolean hasRightChild(Node<E> temp) {
