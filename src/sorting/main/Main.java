@@ -7,9 +7,7 @@
 
 package sorting.main;
 
-import sorting.implementation.BubbleSort;
-import sorting.implementation.InsertionSort;
-import sorting.implementation.SelectionSort;
+import sorting.implementation.*;
 
 import java.util.Arrays;
 
@@ -21,6 +19,9 @@ public class Main {
         System.out.println(Arrays.toString(SelectionSort.sort(arr)));
         arr = new int[]{100, 80, 60, 40, 20, 10};
         System.out.println(Arrays.toString(InsertionSort.sort(arr)));
+        arr = new int[]{100, 80, 60, 40, 20, 10};
+       MergeSort.sort(arr,0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
 
     }
 }
