@@ -8,41 +8,54 @@
 package sorting.implementation;
 
 public class MergeSort {
-    public static void sort(int[] arr, int lowerLimit, int upperLimit) {
-        if (lowerLimit < upperLimit) {
-            int mid = (lowerLimit + upperLimit) / 2;
-            sort(arr, lowerLimit, mid);
-            sort(arr, mid + 1, upperLimit);
-            merge(arr, lowerLimit, mid, upperLimit);
+    public static void sort(int arr[], int lower, int upper)
+    {
+        if (lower < upper) {
+            // Find the middle point
+            int m =lower+ (upper-lower)/2;
+
+            // Sort first and second halves
+            sort(arr, lower, m);
+            sort(arr, m + 1, upper);
+
+            // Merge the sorted halves
+            merge(arr, lower, m, upper);
         }
     }
 
-    private static void merge(int[] arr, int lowerLimit, int mid, int upperLimit) {
-        int arr1 = mid - lowerLimit + 1;
-        int arr2 = upperLimit - mid;
+    public static void merge(int arr[], int lower, int mid, int upper) {
+        int left = mid - lower + 1;
+        int right = upper - mid;
+        int L[] = new int[left];
+        int R[] = new int[right];
+        for (int i = 0; i < left; ++i) {
+            L[i] = arr[lower + i];
+        }
+        for (int j = 0; j < right; ++j) {
+            R[j] = arr[mid + 1 + j];
+        }
 
-        int array1[] = new int[arr1];
-        int array2[] = new int[arr2];
-
-        for (int i = 0; i < arr1; ++i)
-            array1[i] = arr[lowerLimit + i];
-        for (int j = 0; j < arr2; ++j)
-            array2[j] = arr[mid + 1 + j];
-
-        int i = 0, j = 0, k = lowerLimit;
-        while (i < arr1 && j < arr2) {
-            if (array1[i] < array2[j]) {
-                arr[k++] = array1[i++];
+        int i = 0, j = 0;
+        int k = lower;
+        while (i < left && j < right) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
             } else {
-                arr[k++] = array2[j++];
+                arr[k] = R[j];
+                j++;
             }
+            k++;
         }
-        for (; i < arr1; i++) {
-            arr[k++] = array1[i];
+        while (i < left) {
+            arr[k] = L[i];
+            i++;
+            k++;
         }
-        for (; j < arr2; j++) {
-            arr[k++] = array1[j];
+        while (j < right) {
+            arr[k] = R[j];
+            j++;
+            k++;
         }
-
     }
 }

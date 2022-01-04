@@ -7,13 +7,15 @@
 
 package sorting.main;
 
-import sorting.implementation.*;
+import sorting.implementation.CountingSort;
+import sorting.implementation.MergeSort;
+import sorting.implementation.QuickSort;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//        int [] arr = {100,80,60,40,20,10};
+        int [] arr = {1,8,6,4,2,1,0};
 //        System.out.println(Arrays.toString(BubbleSort.sort(arr)));
 //        arr = new int[]{100, 80, 60, 40, 20, 10};
 //        System.out.println(Arrays.toString(SelectionSort.sort(arr)));
@@ -22,8 +24,9 @@ public class Main {
 //        arr = new int[]{100, 80, 60, 40, 20, 10};
 //        MergeSort.sort(arr,0, arr.length-1);
 //        System.out.println(Arrays.toString(arr));
-        int [] arr = new int[]{5,3,2,6,4,1,3,7};
+//        int [] arr = new int[]{5,3,2,6,4,1,3,7};
         QuickSort.sort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
+//        CountingSort.sort(arr);
     }
 }
